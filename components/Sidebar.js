@@ -1,23 +1,63 @@
-import React from 'react'
+import React from 'react';
+import Image from 'next/image';
+import SidebarLink from './SidebarLink';
+import {
+  HashtagIcon,
+  BellIcon,
+  InboxIcon,
+  BookmarkIcon,
+  ClipboardListIcon,
+  UserIcon,
+  DotsCircleHorizontalIcon,
+  DotsHorizontalIcon,
+} from "@heroicons/react/outline";
+
+import {HomeIcon} from '@heroicons/react/solid';
 
 function Sidebar() {
   return (
-        <div>
-            <div className="flex shadow flex-col-reverse md:flex-row p-6 relative overflow-hidden rounded-md">
-                <div>
-                    <h1 className="font-sans text-center md:text-left max-w-30 m-auto font-bold text-teal-700 my-2">Angela Davidson</h1>
-                    <p className='md:max-w-[60%] text-teal-300 md:mr-auto text-center md:text-left'>
-                        This is Angela. She is an orphan. She is in need of financial aid and people to help her get 
-                        on her feet.
-                    </p>
-                    <button className='bg-teal-800 text-white border-teal-500 border-2 inline-block px-4 py-2 rounded mt-5 hover:bg-white hover:text-teal-800 transition-color'>Support</button>
-                </div>
-                <img className='md:object-cover h-[90px] mx-auto max-w-[90px] md:max-w-[200px] rounded-[50%] md:rounded-none md:absolute md:top-0 md:right-0 md:h-full ' src="/child.jpg" alt="baby" width={100} height={100}/>
-            </div>
+    <div className='hidden sm:flex flex-col items-center xl:items-start xl:w-[340px] 
+      p-2 fixed top-0 left-0 h-full'>
+        
+      <div className='flex items-center justify-center 
+        w-14 h-14 hoverAnimation p-0 xl:ml-24 '>
+          <Image src="/images/twitter-icon.jpg" width={30} height={30}/>
+      </div>
+      <div className="space-y-2.5 mt-4 mb-2.5 xl:ml-24">
+        <SidebarLink text="Home" Icon={HomeIcon} active />
+        <SidebarLink text="Explore" Icon={HashtagIcon} />
+        <SidebarLink text="Notifications" Icon={BellIcon} />
+        <SidebarLink text="Messages" Icon={InboxIcon} />
+        <SidebarLink text="Bookmarks" Icon={BookmarkIcon} />
+        <SidebarLink text="Lists" Icon={ClipboardListIcon} />
+        <SidebarLink text="Profile" Icon={UserIcon} />
+        <SidebarLink text="More" Icon={DotsCircleHorizontalIcon} />
+      </div>
+
+      <button className='hidden xl:inline ml-auto 
+        bg-[#1d9bf0] rounded-full w-56 h-[52px] 
+          text-lg font-bold shadow-md hover:bg-[#1a8cda] text-[#d9d9d9]'>
+            Tweet
+      </button>
+
+      <div className='text-[#d9d9d9] flex items-center 
+      justify-center hoverAnimation xl:ml-auto xl:-mr-5 
+      mt-auto'>
+        
+        <img src="/images/Pattern.png" className='h-10 w-10 rounded-full xl:mr-2.5'/>
+        
+        <div className='hidden xl:inline leading-5 '>
+          <h4 className='font-bold'>PeterCoderCoder</h4>
+          <p className='text-[#6e767d]'>@petercoder</p>
         </div>
-    
+        
+        <DotsHorizontalIcon className='h-5 hidden xl:inline ml-10' />
       
-   
+      </div>
+
+  
+
+    </div>
   )
 }
 
