@@ -1,18 +1,19 @@
-
 import React from 'react';
-import { 
-    Calendar, 
-    ChartBar, 
-    EmojiHappy, 
-    Photograph, 
-    XCircleOutline 
-} from 'heroicons-react';
 
 // Emoji Mart 
 // npm i emoji-mart
 // https://www.npmjs.com/package/emoji-mart
-import 'emoji-mart/css/emoji-mart.css'
-import { Picker } from 'emoji-mart'
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker } from 'emoji-mart';
+
+// Tailwind CSS heroicons/react
+import { 
+    CalendarIcon, 
+    ChartBarIcon, 
+    EmojiHappyIcon, 
+    PhotographIcon, 
+    XCircleIcon 
+} from '@heroicons/react/outline';
 
 export default function Input() {
     // Hooks
@@ -63,7 +64,7 @@ export default function Input() {
                                 hover:bg-[#272c26] bg-opacity-75 
                                 rounded-full flex items-center justify-center top-1 left-1 cursor-pointer'>
 
-                                    <XCircleOutline className='text-white h-5' />
+                                    <XCircleIcon className='text-white h-5' />
                                 </div> 
                                 <img src={selectedFile} alt="" className='rounded-2xl max-h-80 object-contain' />
                             </div>
@@ -77,7 +78,7 @@ export default function Input() {
                     <div className='flex items-center'>
                         <div className='icon' onClick={() => filePickerRef.current.click()}>
                             {/* CONTINUE FROM HERE */}
-                            <Photograph className='h-[22px] text-[#1d9bf0] cursor-pointer' />
+                            <PhotographIcon className='h-[22px] text-[#1d9bf0] cursor-pointer' />
                             <input 
                                 type="file" 
                                 hidden 
@@ -86,16 +87,18 @@ export default function Input() {
                             />
                         </div>
                         <div className='icon rotate-90'>
-                            <ChartBar className='h-[22px] text-[#1d9bf0] cursor-pointer' />
+                            <ChartBarIcon className='h-[22px] text-[#1d9bf0] cursor-pointer' />
                         </div>
 
                         <div className='icon' onClick={() => setShowEmojis(!showEmojis)}>
-                            <EmojiHappy className='h-[22px] text-[#1d9bf0] cursor-pointer' />
+                            <EmojiHappyIcon className='h-[22px] text-[#1d9bf0] cursor-pointer' />
                         </div>
 
                         <div className='icon'>
-                            <Calendar className='h-[22px] text-[#1d9bf0] cursor-pointer' />
+                            <CalendarIcon className='h-[22px] text-[#1d9bf0] cursor-pointer' />
                         </div>
+
+                    
 
                         
 
