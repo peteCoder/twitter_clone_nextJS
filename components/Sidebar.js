@@ -36,19 +36,19 @@ function Sidebar() {
 
       <button className='hidden xl:inline ml-auto 
         bg-[#1d9bf0] rounded-full w-56 h-[52px] 
-          text-lg font-bold shadow-md hover:bg-[#1a8cda] text-[#d9d9d9]'>
+          text-lg font-bold shadow-xl hover:bg-[#1a8cda] transition hover:text-blue-100 text-[#d9d9d9]'>
             Tweet
       </button>
 
       <div className='text-[#d9d9d9] flex items-center 
-      justify-center hoverAnimation xl:ml-auto xl:-mr-5 
+      justify-center hoverAnimation xl:ml-auto xl:-mr-5
       mt-auto'>
         
         <img src="/images/Pattern.png" className='h-10 w-10 rounded-full xl:mr-2.5'/>
         
         <div className='hidden xl:inline leading-5 '>
           <h4 className='font-bold'>PeterCoderCoder</h4>
-          <p className='text-[#6e767d]'>@petercoder</p>
+          <p className='text-[#747d85]'>@petercoder</p>
         </div>
         
         <DotsHorizontalIcon className='h-5 hidden xl:inline ml-10' />

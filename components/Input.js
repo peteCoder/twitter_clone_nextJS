@@ -97,11 +97,6 @@ export default function Input() {
                         <div className='icon'>
                             <CalendarIcon className='h-[22px] text-[#1d9bf0] cursor-pointer' />
                         </div>
-
-                    
-
-                        
-
                         
                     </div>
                     <button className='bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 
@@ -136,3 +131,6 @@ export default function Input() {
         </div>
     )
 }
+
+
+
