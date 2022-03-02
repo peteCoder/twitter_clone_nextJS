@@ -15,10 +15,30 @@ import {
     XCircleIcon 
 } from '@heroicons/react/outline';
 
+
+import { db, storage} from '../firebase'
+
+
+import { 
+    addDoc,
+    collection,
+    doc, 
+    serverTimestamp,
+    updateDoc
+} from '@firebase/firestore';
+
+
+
+import { 
+    getDownloadURL, 
+    ref, 
+    uploadString 
+} from 'firebase/storage';
+
 export default function Input() {
     // Hooks
     const [ input, setInput ] = React.useState("");
-    const [selectedFile, setSelectedFile ] = React.useState(null);
+    const [selectedFile, setSelectedFile ] = React.useState("/images/Screenshot_20200723-185427.png");
     const [showEmojis, setShowEmojis ] = React.useState(false);
     const [loading, setLoading ] = React.useState(false);
     const filePickerRef = React.useRef(null);
@@ -32,17 +52,26 @@ export default function Input() {
         setInput(input + emoji);
     }
 
-    const sendPost = () => {
+    const sendPost = async () => {
         if (loading) return;
         setLoading(true);
 
-        const decRef = ''
+        const docRef = await addDoc(collection(db, 'posts'), {
+            // id: session.user.uid,
+            // username: session.user.name,
+            // userImg: session.user.image,
+            // tag: session.user.tag,
+            text: input,
+            timestamp: serverTimestamp(),
+        });
+
+        const imageRef = ref(storage, `posts/${docRef.id}/image`)
     };
 
     const addImageToPost = () => {};
 
     return (
-        <div className='boder-b border-gray-700 space-x-3 flex 
+        <div className='border-b border-gray-700 space-x-3 flex 
             overflow-y-scroll p-3 scrollbar-hide'>
             <img src="/images/Pattern.png" alt='' className='h-11 w-11 rounded-full cursor-pointer' />
             <div className='w-full divide-y divide-gray-700'>
@@ -53,17 +82,17 @@ export default function Input() {
                         name='' 
                         rows='2' 
                         placeholder="What's happening?"
-                        className='bg-transparent outline-none text-[#d9d9d9] \
-                        placeholder-gray-500 text-lg tracking-wide w-full min-h-[50px]'
+                        className='bg-transparent outline-none text-[#d9d9d9]
+                            placeholder-gray-500 text-lg tracking-wider w-full min-h-[50px]'
                     />  
 
                     {
                         selectedFile && (
                             <div className='relative'>
-                                <div onClick={() => setSelectedFile(null)} className='absolute w-8 h-8 bg-[#15181c]
-                                hover:bg-[#272c26] bg-opacity-75 
-                                rounded-full flex items-center justify-center top-1 left-1 cursor-pointer'>
-
+                                <div onClick={() => setSelectedFile(null)} className='absolute top-1 left-1 w-8 h-8 bg-[#15181c]
+                                    hover:bg-[#272c26] bg-opacity-75 
+                                    rounded-full flex items-center justify-center cursor-pointer'>
+                                        
                                     <XCircleIcon className='text-white h-5' />
                                 </div> 
                                 <img src={selectedFile} alt="" className='rounded-2xl max-h-80 object-contain' />
@@ -71,7 +100,6 @@ export default function Input() {
                         )
                     }
 
-                     
                 </div>
 
                 <div className='flex items-center justify-between pt-2.5 '>
